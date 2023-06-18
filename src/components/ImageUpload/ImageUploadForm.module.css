@@ -1,0 +1,23 @@
+.image_form {
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+.no_preview {
+  border: 1px solid #002B5B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E4DCCF;
+  color: white;
+  height: 344px;
+  width: 244px;
+  margin: 1rem auto
+
+}
+
+.preview {
+  height: 344px;
+  width: 244px;
+  margin: 1rem auto
+}

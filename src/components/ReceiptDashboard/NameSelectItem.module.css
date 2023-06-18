@@ -1,0 +1,22 @@
+.nameItem {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #002B5B;
+  color: white;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 3px darkgray;
+}
+
+.nameItemSelected {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: lightgreen;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid darkgreen;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 3px darkgray;
+}
