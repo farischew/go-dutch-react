@@ -8,6 +8,7 @@ import ReceiptModal from "../components/ReceiptDashboard/ReceiptModal";
 import { getPeopleFromApi } from "../services/backend";
 import { ActionBar } from "../components/UI/ActionBar";
 import Container from "../components/UI/Container";
+import UpdateModal from "../components/ReceiptDashboard/UpdateModal";
 
 export default function ReceiptDashboard() {
   const ctx = useContext(ReceiptContext);
@@ -62,6 +63,21 @@ export default function ReceiptDashboard() {
     });
   };
 
+  // Update Modal
+  const [updateModalShow, setUpdateModalShow] = useState(false);
+
+  const updateModalHandler = (event, key) => {
+    event.stopPropagation();
+    console.log(key);
+    setSelectedReceipt([key, ctx.finalOutput[key]]);
+
+    setUpdateModalShow(true);
+  };
+
+  const updateModalCloseHandler = () => {
+    setUpdateModalShow(false);
+  };
+
   return (
     <Container>
       <h1 className="text-3xl font-bold pt-6 pb-8 text-brand-secondary">
@@ -75,6 +91,7 @@ export default function ReceiptDashboard() {
                 name={key}
                 price={value.price}
                 selectedNames={value.people}
+                updateModalHandler={(event) => updateModalHandler(event, key)}
               />
             </li>
           ))}
@@ -85,6 +102,13 @@ export default function ReceiptDashboard() {
             onClose={modalCloseHandler}
             selectedReceipt={selectedReceipt}
             loadedNames={loadedNames}
+          />
+        )}
+        {updateModalShow && (
+          <UpdateModal
+            updateModalShow={updateModalShow}
+            selectedReceipt={selectedReceipt}
+            updateModalCloseHandler={updateModalCloseHandler}
           />
         )}
       </div>
