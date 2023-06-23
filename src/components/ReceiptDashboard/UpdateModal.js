@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import ReactPortal from "./ReactPortal";
 
 import classes from "./UpdateModal.module.css";
+import { updateItemToApi } from "../../services/backend";
 
 export default function UpdateModal(props) {
+  const prevName = props.selectedReceipt[0];
+
   // For Form Values
   const [changedName, setChangedName] = useState(props.selectedReceipt[0]);
   const [changedPrice, setPrice] = useState(props.selectedReceipt[1].price);
@@ -16,9 +19,19 @@ export default function UpdateModal(props) {
     setPrice(event.target.value);
   };
 
-  const onSaveHandler = () => {
-    console.log(changedName);
-    console.log(changedPrice);
+  const onSaveHandler = async () => {
+    const dataObject = {};
+    // const value = parseFloat(changedPrice).toFixed(2);
+    const finalValue = parseFloat(changedPrice);
+    console.log(typeof prevName);
+    console.log(typeof changedName);
+    console.log(typeof finalValue);
+
+    dataObject["CHATERAISE"] = [changedName, finalValue];
+
+    const data = await updateItemToApi(dataObject);
+
+    console.log(data);
   };
 
   // For Modal

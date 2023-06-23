@@ -32,6 +32,24 @@ export const imageUploaderToApi = async (selectedFile) => {
   }
 };
 
+// Edit Line Items
+export const updateItemToApi = async (dataObject) => {
+  console.log(dataObject);
+
+  if (dataObject !== null) {
+    const response = await fetch(URL.UPDATE_URL, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+      },
+      body: dataObject,
+    });
+    const data = await response.json();
+
+    return data;
+  }
+};
+
 // Function to SEND Name List to API
 export const addPeopleToApi = async (nameList) => {
   const response = await fetch(URL.ADD_URL, {

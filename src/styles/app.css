@@ -515,17 +515,17 @@ video {
 .hidden {
   display: none;
 }
-.h-screen {
-  height: 100vh;
-}
 .h-6 {
   height: 1.5rem;
 }
-.w-screen {
-  width: 100vw;
+.h-screen {
+  height: 100vh;
 }
 .w-6 {
   width: 1.5rem;
+}
+.w-screen {
+  width: 100vw;
 }
 .list-none {
   list-style-type: none;
