@@ -89,7 +89,7 @@ export default function NameInput() {
       <ActionBar
         display={nameSaved}
         nextPage={ROUTES.RECEIPT_DAHSBOARD}
-        prevPage={ROUTES.IMAGE_UPLOAD}
+        prevPage={ROUTES.CONFIRM_RECEIPT}
       />
     </Container>
   );

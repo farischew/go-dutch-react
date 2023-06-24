@@ -8,7 +8,7 @@ export default function ConfirmReceipt() {
       <ActionBar
         // display={imageUploaded}
         nextPage={ROUTES.NAME_INPUTS}
-        prevPage={ROUTES.HOMEPAGE}
+        prevPage={ROUTES.IMAGE_UPLOAD}
       />
     </Container>
   );

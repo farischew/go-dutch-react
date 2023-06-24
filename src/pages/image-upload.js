@@ -117,7 +117,7 @@ export default function ImageUpload() {
       {loading && <LoadingSpinner />}
       <ActionBar
         display={imageUploaded}
-        nextPage={ROUTES.NAME_INPUTS}
+        nextPage={ROUTES.CONFIRM_RECEIPT}
         prevPage={ROUTES.HOMEPAGE}
       />
     </Container>
