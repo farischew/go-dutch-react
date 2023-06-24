@@ -27,7 +27,6 @@ export default function ConfirmReceipt() {
 
   const updateModalHandler = (event, key) => {
     event.stopPropagation();
-    console.log(key);
     setSelectedReceipt([key, ctx.finalOutput[key]]);
 
     setUpdateModalShow(true);
@@ -40,7 +39,6 @@ export default function ConfirmReceipt() {
   // Delete Item Handler
   const deleteHandler = async (event, key) => {
     event.stopPropagation();
-    console.log(key);
     const dataObject = {};
 
     dataObject[key] = { name: null };
@@ -53,7 +51,6 @@ export default function ConfirmReceipt() {
         price: data[key],
       });
     }
-    console.log(loadedItems);
 
     ctx.setItemsHandler(loadedItems);
 

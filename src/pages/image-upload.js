@@ -59,7 +59,6 @@ export default function ImageUpload() {
           price: data[key],
         });
       }
-      console.log(loadedItems);
 
       ctx.setItemsHandler(loadedItems);
 
@@ -68,8 +67,6 @@ export default function ImageUpload() {
       });
 
       ctx.setFinalOutputHandler(finalOutput);
-
-      console.log(ctx.finalOutput);
 
       setImageUploaded(true);
     } else {

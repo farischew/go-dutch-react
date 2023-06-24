@@ -34,14 +34,12 @@ export default function UpdateModal(props) {
 
     const data = await updateItemToApi(dataObject);
 
-    console.log(data);
     for (const key in data) {
       loadedItems.push({
         item: key,
         price: data[key],
       });
     }
-    console.log(loadedItems);
 
     ctx.setItemsHandler(loadedItems);
 
@@ -50,8 +48,6 @@ export default function UpdateModal(props) {
     });
 
     ctx.setFinalOutputHandler(finalOutput);
-
-    console.log(ctx.finalOutput);
 
     props.updateModalCloseHandler();
   };

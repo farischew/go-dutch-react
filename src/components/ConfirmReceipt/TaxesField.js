@@ -26,8 +26,6 @@ export default function TaxesField(props) {
     };
 
     const data = await saveTaxesToApi(dataObject);
-
-    console.log(data);
   };
 
   return (

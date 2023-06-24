@@ -14,7 +14,6 @@ export default function FinalDashboard() {
 
   // Fetching Item Split Data
   const getFinalItemsHandler = useCallback(async () => {
-    console.log(sendToApi);
     if (sendToApi) {
       const data = await getFinalItemsFromApi(sendToApi);
 
