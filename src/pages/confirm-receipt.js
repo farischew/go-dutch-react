@@ -5,7 +5,8 @@ import Container from "../components/UI/Container";
 import * as ROUTES from "../constants/routes";
 import ReceiptContext from "../context/receipt-context";
 import ReceiptItemConfirm from "../components/ConfirmReceipt/ReceiptItemConfirm";
-import { updateItemToApi } from "../services/backend";
+import { getTaxesFromApi, updateItemToApi } from "../services/backend";
+import TaxesField from "../components/ConfirmReceipt/TaxesField";
 
 export default function ConfirmReceipt() {
   const ctx = useContext(ReceiptContext);
@@ -63,6 +64,16 @@ export default function ConfirmReceipt() {
     ctx.setFinalOutputHandler(finalOutput);
   };
 
+  // For Taxes ------
+  const [taxes, setTaxes] = useState(null);
+
+  // Get Taxes
+  const getTaxes = async () => {
+    const data = await getTaxesFromApi();
+
+    setTaxes(data);
+  };
+
   return (
     <Container>
       <h1 className="text-3xl font-bold pt-6 pb-8 text-brand-secondary">
@@ -91,6 +102,17 @@ export default function ConfirmReceipt() {
           />
         )}
       </div>
+      <div>
+        <button onClick={getTaxes}>TAXES</button>
+        {taxes && (
+          <div>
+            {taxes.gst} {taxes.service_charge}
+          </div>
+        )}
+      </div>
+      {taxes && (
+        <TaxesField gst={taxes.gst} serviceCharge={taxes.service_charge} />
+      )}
       <ActionBar
         // display={imageUploaded}
         nextPage={ROUTES.NAME_INPUTS}
