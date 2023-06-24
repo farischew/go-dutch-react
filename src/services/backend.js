@@ -96,3 +96,16 @@ export const getTaxesFromApi = async () => {
 
   return data;
 };
+
+// Function to SAVE Taxes to API
+export const saveTaxesToApi = async (dataObject) => {
+  const response = await fetch(URL.SET_TAXES, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(dataObject),
+  });
+
+  const data = await response.json();
+
+  return data;
+};
