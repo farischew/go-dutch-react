@@ -8,7 +8,6 @@ const ReceiptItem = (props) => {
           <h3>{props.name}</h3>
           <p>${props.price}</p>
         </div>
-        <div className={classes.receipt_item_action}></div>
       </div>
       <div>
         <h3 className="pb-1 text-white">Selected Names:</h3>
