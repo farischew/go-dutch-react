@@ -1,8 +1,8 @@
 import * as ROUTES from "../constants/routes";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useInput from "../hooks/use-input";
-import { addPeopleToApi } from "../services/backend";
+import { addPeopleToApi, getPeopleFromApi } from "../services/backend";
 
 import classes from "./name-input.module.css";
 import NameList from "../components/NameInput/NameList";
@@ -47,6 +47,17 @@ export default function NameInput() {
     setNameSaved(true);
     setLoading(false);
   };
+
+  // Get Names
+  const getNames = async () => {
+    const names = await getPeopleFromApi();
+
+    setNameList(names);
+  };
+
+  useEffect(() => {
+    getNames();
+  }, []);
 
   return (
     <Container>

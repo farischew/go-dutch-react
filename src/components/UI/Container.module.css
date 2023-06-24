@@ -1,9 +1,9 @@
 .container {
   min-width: 320px;   /* Minimum width for mobile devices */
   min-height: 480px;  /* Minimum height for mobile devices */
-  height: 100vh;
+  height: 90vh;
   width: 100vw;
   margin: 0 auto;
   text-align: center;
-  overflow: hidden;
+  overflow: scroll;
 }

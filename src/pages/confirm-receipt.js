@@ -5,7 +5,8 @@ import Container from "../components/UI/Container";
 import * as ROUTES from "../constants/routes";
 import ReceiptContext from "../context/receipt-context";
 import ReceiptItemConfirm from "../components/ConfirmReceipt/ReceiptItemConfirm";
-import { updateItemToApi } from "../services/backend";
+import { getTaxesFromApi, updateItemToApi } from "../services/backend";
+import TaxesField from "../components/ConfirmReceipt/TaxesField";
 
 export default function ConfirmReceipt() {
   const ctx = useContext(ReceiptContext);
@@ -26,7 +27,6 @@ export default function ConfirmReceipt() {
 
   const updateModalHandler = (event, key) => {
     event.stopPropagation();
-    console.log(key);
     setSelectedReceipt([key, ctx.finalOutput[key]]);
 
     setUpdateModalShow(true);
@@ -39,7 +39,6 @@ export default function ConfirmReceipt() {
   // Delete Item Handler
   const deleteHandler = async (event, key) => {
     event.stopPropagation();
-    console.log(key);
     const dataObject = {};
 
     dataObject[key] = { name: null };
@@ -52,7 +51,6 @@ export default function ConfirmReceipt() {
         price: data[key],
       });
     }
-    console.log(loadedItems);
 
     ctx.setItemsHandler(loadedItems);
 
@@ -62,6 +60,20 @@ export default function ConfirmReceipt() {
 
     ctx.setFinalOutputHandler(finalOutput);
   };
+
+  // For Taxes ------
+  const [taxes, setTaxes] = useState(null);
+
+  // Get Taxes
+  const getTaxes = async () => {
+    const data = await getTaxesFromApi();
+
+    setTaxes(data);
+  };
+
+  useEffect(() => {
+    getTaxes();
+  }, []);
 
   return (
     <Container>
@@ -91,6 +103,10 @@ export default function ConfirmReceipt() {
           />
         )}
       </div>
+
+      {taxes && (
+        <TaxesField gst={taxes.gst} serviceCharge={taxes.service_charge} />
+      )}
       <ActionBar
         // display={imageUploaded}
         nextPage={ROUTES.NAME_INPUTS}

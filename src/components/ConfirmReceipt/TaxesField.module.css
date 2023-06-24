@@ -1,0 +1,42 @@
+.form_content {
+  border: 1 black;
+  background-color: #002B5B;
+  align-items: center;
+  align-content: center;
+  box-shadow: 2px 1px 5px grey;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding-bottom: 2em;
+}
+
+.form_content h1 {
+  color: white;
+  font-size: large;
+  padding-top: 0.4em;
+  padding-bottom: .2em;
+}
+
+.form_content label {
+  padding: 1em;
+  border: 1px solid gray;
+  background-color: #E4DCCF;
+  width: 90%;
+  color: gray;
+  display: flex;
+}
+
+.form_content input {
+  background-color: #E4DCCF;
+  padding-left: 0.5em;
+  color: black;
+}
+
+.buttonSave {
+  margin-top: 0.7rem;
+  border: 1px  solid black;
+  background-color: #7079f0;
+  color: white;
+  border-radius: 2rem;
+  padding: .5rem 1rem;
+}

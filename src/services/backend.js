@@ -57,7 +57,11 @@ export const addPeopleToApi = async (nameList) => {
     body: JSON.stringify(nameList),
   });
 
+  console.log(nameList);
+
   const data = await response.json();
+
+  await new Promise((resolve) => setTimeout(resolve, 1500));
 
   console.log(data);
 };
@@ -79,6 +83,30 @@ export const getFinalItemsFromApi = async (finalObj) => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(finalObj),
+  });
+
+  const data = await response.json();
+
+  return data;
+};
+
+// Function to GET Taxes to API
+export const getTaxesFromApi = async () => {
+  const response = await fetch(URL.GET_TAXES, {
+    method: "GET",
+  });
+
+  const data = await response.json();
+
+  return data;
+};
+
+// Function to SAVE Taxes to API
+export const saveTaxesToApi = async (dataObject) => {
+  const response = await fetch(URL.SET_TAXES, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(dataObject),
   });
 
   const data = await response.json();

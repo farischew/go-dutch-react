@@ -68,7 +68,6 @@ export default function ReceiptDashboard() {
 
   const updateModalHandler = (event, key) => {
     event.stopPropagation();
-    console.log(key);
     setSelectedReceipt([key, ctx.finalOutput[key]]);
 
     setUpdateModalShow(true);
