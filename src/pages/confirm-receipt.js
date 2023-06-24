@@ -74,6 +74,10 @@ export default function ConfirmReceipt() {
     setTaxes(data);
   };
 
+  useEffect(() => {
+    getTaxes();
+  }, []);
+
   return (
     <Container>
       <h1 className="text-3xl font-bold pt-6 pb-8 text-brand-secondary">
@@ -102,14 +106,7 @@ export default function ConfirmReceipt() {
           />
         )}
       </div>
-      <div>
-        <button onClick={getTaxes}>TAXES</button>
-        {taxes && (
-          <div>
-            {taxes.gst} {taxes.service_charge}
-          </div>
-        )}
-      </div>
+
       {taxes && (
         <TaxesField gst={taxes.gst} serviceCharge={taxes.service_charge} />
       )}
