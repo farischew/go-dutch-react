@@ -25,7 +25,7 @@ const ReceiptItemConfirm = (props) => {
               />
             </svg>
           </button>
-          <button>
+          <button onClick={props.deleteHandler}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

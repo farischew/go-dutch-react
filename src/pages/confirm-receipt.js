@@ -5,12 +5,16 @@ import Container from "../components/UI/Container";
 import * as ROUTES from "../constants/routes";
 import ReceiptContext from "../context/receipt-context";
 import ReceiptItemConfirm from "../components/ConfirmReceipt/ReceiptItemConfirm";
+import { updateItemToApi } from "../services/backend";
 
 export default function ConfirmReceipt() {
   const ctx = useContext(ReceiptContext);
 
   const [items, setItems] = useState(null);
   const [selectedReceipt, setSelectedReceipt] = useState();
+
+  const loadedItems = [];
+  const finalOutput = {};
 
   // Get Items
   useEffect(() => {
@@ -32,6 +36,33 @@ export default function ConfirmReceipt() {
     setUpdateModalShow(false);
   };
 
+  // Delete Item Handler
+  const deleteHandler = async (event, key) => {
+    event.stopPropagation();
+    console.log(key);
+    const dataObject = {};
+
+    dataObject[key] = { name: null };
+
+    const data = await updateItemToApi(dataObject);
+
+    for (const key in data) {
+      loadedItems.push({
+        item: key,
+        price: data[key],
+      });
+    }
+    console.log(loadedItems);
+
+    ctx.setItemsHandler(loadedItems);
+
+    loadedItems.forEach((obj) => {
+      finalOutput[obj.item] = { price: obj.price, people: [] };
+    });
+
+    ctx.setFinalOutputHandler(finalOutput);
+  };
+
   return (
     <Container>
       <h1 className="text-3xl font-bold pt-6 pb-8 text-brand-secondary">
@@ -47,6 +78,7 @@ export default function ConfirmReceipt() {
                   price={value.price}
                   selectedNames={value.people}
                   updateModalHandler={(event) => updateModalHandler(event, key)}
+                  deleteHandler={(event) => deleteHandler(event, key)}
                 />
               </li>
             ))}
