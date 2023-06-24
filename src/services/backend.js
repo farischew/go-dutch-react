@@ -85,3 +85,14 @@ export const getFinalItemsFromApi = async (finalObj) => {
 
   return data;
 };
+
+// Function to GET Taxes to API
+export const getTaxesFromApi = async () => {
+  const response = await fetch(URL.GET_TAXES, {
+    method: "GET",
+  });
+
+  const data = await response.json();
+
+  return data;
+};
