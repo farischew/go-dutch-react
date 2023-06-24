@@ -31,19 +31,23 @@ export default function FinalDashboard() {
   }, [ctx.finalOutput, getFinalItemsHandler]);
 
   return (
-    <Container>
-      <h1 className="text-3xl font-bold pt-6 pb-8 text-brand-secondary">
-        Confirm your Split
-      </h1>
-      <div>
-        <FinalDashboardList finalSplit={finalOutput} />
+    <>
+      <Container>
+        <h1 className="text-3xl font-bold pt-6 pb-8 text-brand-secondary">
+          Confirm your Split
+        </h1>
+        <div>
+          <FinalDashboardList finalSplit={finalOutput} />
+        </div>
+      </Container>
+      <div className="bg-brand-background h-60">
+        <div className="flex justify-center">
+          <NewReceiptButton
+            title={"Add a New Receipt"}
+            location={"/image_upload"}
+          />
+        </div>
       </div>
-      <div className="flex justify-center">
-        <NewReceiptButton
-          title={"Add a New Receipt"}
-          location={"/image_upload"}
-        />
-      </div>
-    </Container>
+    </>
   );
 }
