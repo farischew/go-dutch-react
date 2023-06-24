@@ -52,6 +52,8 @@ export default function UpdateModal(props) {
     ctx.setFinalOutputHandler(finalOutput);
 
     console.log(ctx.finalOutput);
+
+    props.updateModalCloseHandler();
   };
 
   // For Modal
