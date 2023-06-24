@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import * as ROUTES from "./constants/routes";
 import LoadingScreen from "./components/UI/LoadingScreen";
+import ConfirmReceipt from "./pages/confirm-receipt";
 
 const Homepage = lazy(() => import("./pages/homepage"));
 const ImageUpload = lazy(() => import("./pages/image-upload"));
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path={ROUTES.HOMEPAGE} element={<Homepage />} />
             <Route path={ROUTES.IMAGE_UPLOAD} element={<ImageUpload />} />
+            <Route path={ROUTES.CONFIRM_RECEIPT} element={<ConfirmReceipt />} />
             <Route path={ROUTES.NAME_INPUTS} element={<NameInput />} />
             <Route
               path={ROUTES.RECEIPT_DAHSBOARD}
