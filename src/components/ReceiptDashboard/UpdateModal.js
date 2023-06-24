@@ -6,12 +6,12 @@ import { updateItemToApi } from "../../services/backend";
 import ReceiptContext from "../../context/receipt-context";
 
 export default function UpdateModal(props) {
-  // const ctx = useContext(ReceiptContext);
+  const ctx = useContext(ReceiptContext);
   const prevName = props.selectedReceipt[0];
 
   // Initialising empty array for items fetched from API
-  // const loadedItems = [];
-  // const finalOutput = {};
+  const loadedItems = [];
+  const finalOutput = {};
 
   // For Form Values
   const [changedName, setChangedName] = useState(props.selectedReceipt[0]);
@@ -35,23 +35,23 @@ export default function UpdateModal(props) {
     const data = await updateItemToApi(dataObject);
 
     console.log(data);
-    // for (const key in data) {
-    //   loadedItems.push({
-    //     item: key,
-    //     price: data[key],
-    //   });
-    // }
-    // console.log(loadedItems);
+    for (const key in data) {
+      loadedItems.push({
+        item: key,
+        price: data[key],
+      });
+    }
+    console.log(loadedItems);
 
-    // ctx.setItemsHandler(loadedItems);
+    ctx.setItemsHandler(loadedItems);
 
-    // loadedItems.forEach((obj) => {
-    //   finalOutput[obj.item] = { price: obj.price, people: [] };
-    // });
+    loadedItems.forEach((obj) => {
+      finalOutput[obj.item] = { price: obj.price, people: [] };
+    });
 
-    // ctx.setFinalOutputHandler(finalOutput);
+    ctx.setFinalOutputHandler(finalOutput);
 
-    // console.log(ctx.finalOutput);
+    console.log(ctx.finalOutput);
   };
 
   // For Modal
