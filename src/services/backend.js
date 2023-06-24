@@ -57,7 +57,11 @@ export const addPeopleToApi = async (nameList) => {
     body: JSON.stringify(nameList),
   });
 
+  console.log(nameList);
+
   const data = await response.json();
+
+  await new Promise((resolve) => setTimeout(resolve, 1500));
 
   console.log(data);
 };
