@@ -1,11 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ReactPortal from "./ReactPortal";
 
 import classes from "./UpdateModal.module.css";
 import { updateItemToApi } from "../../services/backend";
+import ReceiptContext from "../../context/receipt-context";
 
 export default function UpdateModal(props) {
+  // const ctx = useContext(ReceiptContext);
   const prevName = props.selectedReceipt[0];
+
+  // Initialising empty array for items fetched from API
+  // const loadedItems = [];
+  // const finalOutput = {};
 
   // For Form Values
   const [changedName, setChangedName] = useState(props.selectedReceipt[0]);
@@ -23,15 +29,29 @@ export default function UpdateModal(props) {
     const dataObject = {};
     // const value = parseFloat(changedPrice).toFixed(2);
     const finalValue = parseFloat(changedPrice);
-    console.log(typeof prevName);
-    console.log(typeof changedName);
-    console.log(typeof finalValue);
 
-    dataObject["CHATERAISE"] = [changedName, finalValue];
+    dataObject[prevName] = { name: changedName, price: finalValue };
 
     const data = await updateItemToApi(dataObject);
 
     console.log(data);
+    // for (const key in data) {
+    //   loadedItems.push({
+    //     item: key,
+    //     price: data[key],
+    //   });
+    // }
+    // console.log(loadedItems);
+
+    // ctx.setItemsHandler(loadedItems);
+
+    // loadedItems.forEach((obj) => {
+    //   finalOutput[obj.item] = { price: obj.price, people: [] };
+    // });
+
+    // ctx.setFinalOutputHandler(finalOutput);
+
+    // console.log(ctx.finalOutput);
   };
 
   // For Modal

@@ -35,14 +35,13 @@ export const imageUploaderToApi = async (selectedFile) => {
 // Edit Line Items
 export const updateItemToApi = async (dataObject) => {
   console.log(dataObject);
+  console.log(typeof dataObject);
 
   if (dataObject !== null) {
     const response = await fetch(URL.UPDATE_URL, {
       method: "POST",
-      headers: {
-        accept: "application/json",
-      },
-      body: dataObject,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataObject),
     });
     const data = await response.json();
 

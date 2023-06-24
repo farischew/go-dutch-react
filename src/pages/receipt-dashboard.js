@@ -85,16 +85,17 @@ export default function ReceiptDashboard() {
       </h1>
       <div className="container mx-auto">
         <ul>
-          {Object.entries(ctx.finalOutput).map(([key, value]) => (
-            <li key={key} onClick={() => openReceiptHandler(key)}>
-              <ReceiptItem
-                name={key}
-                price={value.price}
-                selectedNames={value.people}
-                updateModalHandler={(event) => updateModalHandler(event, key)}
-              />
-            </li>
-          ))}
+          {items &&
+            Object.entries(items).map(([key, value]) => (
+              <li key={key} onClick={() => openReceiptHandler(key)}>
+                <ReceiptItem
+                  name={key}
+                  price={value.price}
+                  selectedNames={value.people}
+                  updateModalHandler={(event) => updateModalHandler(event, key)}
+                />
+              </li>
+            ))}
         </ul>
         {showModal && (
           <ReceiptModal
